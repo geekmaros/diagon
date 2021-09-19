@@ -1,0 +1,26 @@
+{
+  "name": "Diagon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "npx tailwindcss-cli build css/tailwind.css -o styles/tailwind.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.3.4",
+    "postcss": "^8.3.6",
+    "prettier": "2.4.1",
+    "sass": "^1.41.1",
+    "tailwindcss": "^2.2.15",
+    "vite": "^2.5.10"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.3.3",
+    "node-sass": "^6.0.1",
+    "sass-loader": "^12.1.0"
+  }
+}
