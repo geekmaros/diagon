@@ -9,3 +9,14 @@
   background: #E6E8EC;
   border-radius: 1px;
 }
+
+body{
+  overflow-x: hidden;
+
+  .app-header{
+    background: #FCFCFD;
+  }
+  .app-main{
+    height: calc(100vh - 68px);
+  }
+}

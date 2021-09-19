@@ -7,6 +7,7 @@ module.exports = {
         serif: ["Inter", "sans-serif"],
       },
       spacing: {
+        "29px": "29px",
         "42px": "42px",
         "53px": "53px",
         "56px": "56px",
@@ -30,9 +31,11 @@ module.exports = {
         "diagon-gray-100": "#777E90",
         "diagon-gray-200": "#B1B5C4",
         "diagon-gray-300": "#e6e8ec",
+        "diagon-gray-400": "#344054",
         "diagon-pink": "#ffebee",
         "diagon-pink-200": "#D48A8A",
         "diagon-red": "#E10101",
+        "diagon-red-100": "#FFF5F5",
         "diagon-black": "#23262F",
       },
       lineHeight: {
