@@ -32,6 +32,7 @@ module.exports = {
         "diagon-gray-200": "#B1B5C4",
         "diagon-gray-300": "#e6e8ec",
         "diagon-gray-400": "#344054",
+        "diagon-gray-500": "#f8f8f8",
         "diagon-pink": "#ffebee",
         "diagon-pink-200": "#D48A8A",
         "diagon-red": "#E10101",

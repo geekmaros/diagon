@@ -19,4 +19,13 @@ body{
   .app-main{
     height: calc(100vh - 68px);
   }
+  .app-side-menu{
+    .side-nav-menu{
+
+      &.active{
+        color: red;
+        background-color: #FFF5F5 ;
+      }
+    }
+  }
 }
