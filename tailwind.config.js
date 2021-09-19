@@ -9,6 +9,7 @@ module.exports = {
       spacing: {
         "29px": "29px",
         "42px": "42px",
+        "50px": "50px",
         "53px": "53px",
         "56px": "56px",
         62: "62px",
@@ -33,11 +34,13 @@ module.exports = {
         "diagon-gray-300": "#e6e8ec",
         "diagon-gray-400": "#344054",
         "diagon-gray-500": "#f8f8f8",
+        "diagon-gray-600": "#667085",
         "diagon-pink": "#ffebee",
         "diagon-pink-200": "#D48A8A",
         "diagon-red": "#E10101",
         "diagon-red-100": "#FFF5F5",
         "diagon-black": "#23262F",
+        "diagon-blue": "#3D4A76",
       },
       lineHeight: {
         "12px": "12px",
@@ -74,6 +77,7 @@ module.exports = {
       },
       maxWidth: {
         "100px": "100px",
+        "250px": "250.67px",
 
       },
       boxShadow: {

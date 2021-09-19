@@ -16,7 +16,7 @@
       id="app-index"
       class="md:grid grid-cols-12 relative bg-white w-full"
     >
-    <header class="app-header col-span-12 py-2 lg:px-6 pb-5 lg:pb-3 w-full shadow-lg lg:flex justify-between">
+    <header class="app-header z-30 sticky top-0 col-span-12 py-2 lg:px-6 pb-5 lg:pb-3 w-full shadow-lg lg:flex justify-between">
       <div class="logo-search flex mx-3 lg:mx-0 justify-between lg:justify-start items-center">
         <div class="logo">
           <img src="assets/svg/main-logo%201.svg" alt="">
@@ -97,7 +97,7 @@
         </div>
       </nav>
     </header>
-    <div class="app-main w-full grid grid-cols-12 col-span-12 h-screen">
+    <div class="app-main w-full grid grid-cols-12 col-span-12">
       <aside class="app-side-menu col-span-2 bg-white px-4 pt-8">
         <div class="input-eye relative flex items-center">
           <input
@@ -166,24 +166,114 @@
               <a href="#">Settings</a>
             </li>
 
-            <li class="last-link absolute bottom-0 mb-4">
-              <div class="profile cursor-pointer flex items-start">
-                <div class="avatar flex items-center space-x-1.5">
-                  <img class="w-10 h-10 rounded-full" src="assets/images/user.png" alt="">
-                <div class="name">
-                  <span class="text-diagon-black block text-sm">Usman Abiola</span>
-                  <span class="text-diagon-gray-100 text-12px">Usmanabiola@gmail.com</span>
-                </div>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer text-diagon-gray-100 h-6 w-6 -ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                </svg>
-              </div>
-            </li>
+
           </ul>
         </nav>
+        <div class="last-link absolute bottom-0 mb-4">
+          <div class="profile cursor-pointer flex items-start">
+            <div class="avatar flex items-center space-x-1.5">
+              <img class="w-10 h-10 rounded-full" src="assets/images/user.png" alt="">
+              <div class="name">
+                <span class="text-diagon-black block text-sm">Usman Abiola</span>
+                <span class="text-diagon-gray-100 text-12px">Usmanabiola@gmail.com</span>
+              </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer text-diagon-gray-100 h-6 w-6 -ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+          </div>
+        </div>
       </aside>
-      <main class="app-main-view bg-diagon-gray-500 col-span-10"></main>
+      <main class="app-main-view bg-diagon-gray-500 col-span-10 pt-50px pb-16 pl-50px pr-6">
+        <div class="bread-crumb hidden text-xs text-diagon-gray-600 flex  space-x-1 leading-6 font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+
+          <span class="cursor-pointer">Buy Airtime</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+
+          <span class="cursor-pointer text-diagon-red">DSTV Nigeria</span>
+        </div>
+
+        <div class="bread-crumb text-xs text-diagon-gray-600 flex items-center space-x-8 leading-6 font-medium">
+          <a href="#" class="cursor-pointer text-white bg-diagon-blue rounded-full px-3 p-1 ">Top Products</a>
+
+          <a href="#" class="cursor-pointer block">Airtime</a>
+          <a href="#" class="cursor-pointer block">Data Plan</a>
+          <a href="#" class="cursor-pointer block">GiftCards</a>
+          <a href="#" class="cursor-pointer block">Electric bill</a>
+          <a href="#" class="cursor-pointer block">TV Subscription</a>
+
+
+        </div>
+
+
+
+        <div class="sub-main mt-62 grid grid-cols-4 gap-y-8">
+          <a href="#" v-for="(product, index) in productData" :key="`product-${index}`" class="product-wrapper rounded-lg shadow-lg max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+            <div class="product-detail">
+              <div class="product-icon">
+                <img class="rounded h-54 w-54" :src="`assets/images/${product.id}.png`" alt="">
+              </div>
+              <div class="product-name mt-5">
+                <span class="text-diagon-black text-2xl font-medium leading-8">{{product.name}}</span>
+                <span class="block text-12px leading-5 text-diagon-gray-600">193 Purchases</span>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="product-wrapper rounded-lg shadow-lg max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+            <div class="product-detail">
+              <div class="product-icon">
+                <img class="rounded h-54 w-54" src="assets/images/dstv.png" alt="">
+              </div>
+              <div class="product-name mt-5">
+                <span class="text-diagon-black text-2xl font-medium leading-8">DSTV Nigeria</span>
+                <span class="block text-12px leading-5 text-diagon-gray-600">193 Purchases</span>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="product-wrapper rounded-lg shadow-lg max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+            <div class="product-detail">
+              <div class="product-icon">
+                <img class="rounded h-54 w-54" src="assets/images/mtn.png" alt="">
+              </div>
+              <div class="product-name mt-5">
+                <span class="text-diagon-black text-2xl font-medium leading-8">MTN Nigeria</span>
+                <span class="block text-12px leading-5 text-diagon-gray-600">193 Purchases</span>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="product-wrapper rounded-lg shadow-lg max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+            <div class="product-detail">
+              <div class="product-icon">
+                <img class="rounded h-54 w-54" src="assets/images/gotv.png" alt="">
+              </div>
+              <div class="product-name mt-5">
+                <span class="text-diagon-black text-2xl font-medium leading-8">GOTV Nigeria</span>
+                <span class="block text-12px leading-5 text-diagon-gray-600">193 Purchases</span>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="product-wrapper rounded-lg shadow-lg max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+            <div class="product-detail">
+              <div class="product-icon">
+                <img class="rounded h-54 w-54" src="assets/images/spec.png" alt="">
+              </div>
+              <div class="product-name mt-5">
+                <span class="text-diagon-black text-2xl font-medium leading-8">Spectranet</span>
+                <span class="block text-12px leading-5 text-diagon-gray-600">193 Purchases</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </main>
     </div>
     </section>
 
@@ -197,8 +287,47 @@
             passwordType: 'password',
             language: ['EN/NGN', 'IN/IND', 'EN/USA', 'EN/ENG'],
             activeLang: 'EN/NGN',
-            showLangOption: false
+            showLangOption: false,
+            productData: [
+              {
+                id: 'dstv',
+                name: "DSTV Nigeria"
+              },
+              {
+                id: 'mtn',
+                name: "MTN Nigeria"
+              },
+              {
+                id: 'gotv',
+                name: "GOTV Nigeria"
+              },
+              {
+                id: 'spec',
+                name: "Spectranet"
+              },
+              {
+                id: 'dstv',
+                name: "DSTV Nigeria"
+              },
+              {
+                id: 'mtn',
+                name: "MTN Nigeria"
+              },
+              {
+                id: 'gotv',
+                name: "GOTV Nigeria"
+              },
+              {
+                id: 'spec',
+                name: "Spectranet"
+              }
+            ]
           };
+        },
+        computed: {
+          imageUrl(){
+            return require()
+          }
         },
         methods: {
           selectActiveLang(lang){
