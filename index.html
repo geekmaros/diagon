@@ -97,8 +97,13 @@
         </div>
       </nav>
     </header>
-    <div class="app-main w-full grid grid-cols-12 col-span-12">
-      <aside class="app-side-menu col-span-2 bg-white px-4 pt-8">
+    <div class="app-main overflow-y-scroll w-full md:grid grid-cols-12 col-span-12">
+      <div class="menu bg-white w-10 h-10 flex justify-center items-center rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </div>
+      <aside class="app-side-menu hidden md:col-span-3 lg:col-span-2 bg-white px-4 pt-8">
         <div class="input-eye relative flex items-center">
           <input
                   class="
@@ -184,7 +189,7 @@
           </div>
         </div>
       </aside>
-      <main class="app-main-view bg-diagon-gray-500 col-span-10 pt-50px pb-16 pl-50px pr-6">
+      <main class="app-main-view bg-diagon-gray-500 md:col-span-9 lg:col-span-10 pt-5 md:pt-10 lg:pt-50px pb-16 pl-5 lg:pl-50px pr-6">
         <div class="bread-crumb hidden text-xs text-diagon-gray-600 flex  space-x-1 leading-6 font-medium">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -202,25 +207,25 @@
           <span class="cursor-pointer text-diagon-red">DSTV Nigeria</span>
         </div>
 
-        <div class="bread-crumb text-xs text-diagon-gray-600 flex items-center space-x-8 leading-6 font-medium">
-          <a href="#" class="cursor-pointer text-white bg-diagon-blue rounded-full px-3 p-1 ">Top Products</a>
+        <div class="bread-crumb text-xs text-diagon-gray-600 flex flex-wrap space-y-3 md:space-y-0 items-center space-x-4 lg:space-x-8 leading-6 font-medium">
+          <a href="#" class="cursor-pointer text-white bg-diagon-blue rounded-full  px-3 p-1 ">Top Products</a>
 
-          <a href="#" class="cursor-pointer block">Airtime</a>
-          <a href="#" class="cursor-pointer block">Data Plan</a>
-          <a href="#" class="cursor-pointer block">GiftCards</a>
-          <a href="#" class="cursor-pointer block">Electric bill</a>
-          <a href="#" class="cursor-pointer block">TV Subscription</a>
+          <a href="#" class="cursor-pointer block hover:text-diagon-red">Airtime</a>
+          <a href="#" class="cursor-pointer block  hover:text-diagon-red">Data Plan</a>
+          <a href="#" class="cursor-pointer block hover:text-diagon-red">GiftCards</a>
+          <a href="#" class="cursor-pointer block hover:text-diagon-red">Electric bill</a>
+          <a href="#" class="cursor-pointer block hover:text-diagon-red">TV Subscription</a>
 
 
         </div>
 
 
 
-        <div class="sub-main mt-62 grid grid-cols-4 gap-y-8">
-          <a href="#" v-for="(product, index) in productData" :key="`product-${index}`" class="product-wrapper rounded-lg shadow-lg max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+        <div class="sub-main mt-10 md:mt-14 lg:mt-62 grid md:grid-cols-3 lg:grid-cols-4 md:gap-x-5 gap-y-8 pb-10">
+          <a href="#" v-for="(product, index) in productData" :key="`product-${index}`" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
             <div class="product-detail">
               <div class="product-icon">
-                <img class="rounded h-54 w-54" :src="`assets/images/${product.id}.png`" alt="">
+                <img class="rounded h-53px w-53px" :src="`assets/images/${product.id}.png`" alt="">
               </div>
               <div class="product-name mt-5">
                 <span class="text-diagon-black text-2xl font-medium leading-8">{{product.name}}</span>
@@ -228,10 +233,10 @@
               </div>
             </div>
           </a>
-          <a href="#" class="product-wrapper rounded-lg shadow-lg max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+          <a href="#" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
             <div class="product-detail">
               <div class="product-icon">
-                <img class="rounded h-54 w-54" src="assets/images/dstv.png" alt="">
+                <img class="rounded h-53px w-53px" src="assets/images/dstv.png" alt="">
               </div>
               <div class="product-name mt-5">
                 <span class="text-diagon-black text-2xl font-medium leading-8">DSTV Nigeria</span>
@@ -239,10 +244,10 @@
               </div>
             </div>
           </a>
-          <a href="#" class="product-wrapper rounded-lg shadow-lg max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+          <a href="#" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
             <div class="product-detail">
               <div class="product-icon">
-                <img class="rounded h-54 w-54" src="assets/images/mtn.png" alt="">
+                <img class="rounded h-53px w-53px" src="assets/images/mtn.png" alt="">
               </div>
               <div class="product-name mt-5">
                 <span class="text-diagon-black text-2xl font-medium leading-8">MTN Nigeria</span>
@@ -250,10 +255,10 @@
               </div>
             </div>
           </a>
-          <a href="#" class="product-wrapper rounded-lg shadow-lg max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+          <a href="#" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
             <div class="product-detail">
               <div class="product-icon">
-                <img class="rounded h-54 w-54" src="assets/images/gotv.png" alt="">
+                <img class="rounded h-53px w-53px" src="assets/images/gotv.png" alt="">
               </div>
               <div class="product-name mt-5">
                 <span class="text-diagon-black text-2xl font-medium leading-8">GOTV Nigeria</span>
@@ -261,10 +266,10 @@
               </div>
             </div>
           </a>
-          <a href="#" class="product-wrapper rounded-lg shadow-lg max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+          <a href="#" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
             <div class="product-detail">
               <div class="product-icon">
-                <img class="rounded h-54 w-54" src="assets/images/spec.png" alt="">
+                <img class="rounded h-53px w-53px" src="assets/images/spec.png" alt="">
               </div>
               <div class="product-name mt-5">
                 <span class="text-diagon-black text-2xl font-medium leading-8">Spectranet</span>

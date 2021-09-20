@@ -12,12 +12,14 @@
 
 body{
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 .app-header{
     background: #FCFCFD;
 }
 .app-main{
     height: calc(100vh - 68px);
+
 }
 .app-side-menu{}
 .side-nav-menu.active{
@@ -26,6 +28,7 @@ body{
  }
 .app-main-view{
     background: #f8f8f8;
+    overflow-y: scroll;
 }
 
 
