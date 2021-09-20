@@ -38,6 +38,41 @@ body{
 input[type=text]::placeholder{
     opacity: .5;
 }
+.transaction-img-wrapper{
+    border: 1.37981px solid #d9cece;
+    box-sizing: border-box;
+    border-radius: 6.89904px;
+}
+.qr-wrapper{
+    background: #F4F5F6;
+    border-radius: 16px;
+}
+
+.side-ads{
+    background: #FFF3F3;
+    border-radius: 8px;
+}
+.dismiss{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+
+    /* identical to box height, or 143% */
+
+    /* Primary/500 */
+    color: #9E77ED;
+}
+
+.whatnew{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+
+    /* identical to box height, or 143% */
+
+    /* Primary/700 */
+    color: #6941C6;
+}
 
 
 @tailwind base;

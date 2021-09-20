@@ -103,7 +103,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </div>
-      <aside v-if="showAside" class="app-side-menu md:col-span-3 lg:col-span-2 bg-white px-4 pt-8">
+      <aside v-if="showAside" class="app-side-menu relative md:col-span-3 lg:col-span-2 bg-white px-4 pt-8">
         <div class="input-eye relative flex items-center">
           <input
                   class="
@@ -132,7 +132,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
-              <a href="#">Home</a>
+              <a href="index.html">Home</a>
             </li>
             <li :class="{'active': urlChecker('wallet')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -148,46 +148,61 @@
               <a href="#">Transactions</a>
             </li>
 
-            <li class="divide mt-4 mb-5"></li>
-
-            <li :class="{'active': urlChecker('transfer')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-              </svg>
-              <a href="#">Transfer</a>
-            </li>
-
-            <li :class="{'active': urlChecker('support')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-              <a href="#">Support</a>
-            </li>
-            <li :class="{'active': urlChecker('settings')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <a href="#">Settings</a>
-            </li>
+            <li class="divide hidden mt-4 mb-5"></li>
 
 
           </ul>
         </nav>
-        <div class="last-link absolute bottom-0 mb-4">
-          <div class="profile cursor-pointer flex items-start">
-            <div class="avatar flex items-center space-x-1.5">
-              <img class="w-10 h-10 rounded-full" src="assets/images/user.png" alt="">
-              <div class="name">
-                <span class="text-diagon-black block text-sm">Usman Abiola</span>
-                <span class="text-diagon-gray-100 text-12px">Usmanabiola@gmail.com</span>
-              </div>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer text-diagon-gray-100 h-6 w-6 -ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+        <div class="lg:absolute bottom-0">
+          <div :class="{'active': urlChecker('transfer')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
             </svg>
+            <a href="#">Transfer</a>
+          </div>
+
+          <div :class="{'active': urlChecker('support')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <a href="#">Support</a>
+          </div>
+          <div :class="{'active': urlChecker('settings')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <a href="#">Settings</a>
+          </div>
+          <div class="side-ads hidden p-4">
+
+            <p class="text-sm font-medium leading-5 text-diagon-black">New features available!</p>
+            <p class="text-sm font-medium leading-5 text-diagon-gray-100">New features available!</p>
+
+            <img src="assets/images/Image.png" alt="">
+
+         <div class="add-link flex space-x-5 mt-3">
+           <span class="dismiss">Dismiss</span>
+           <a class="whatnew" href="#">What's new?</a>
+         </div>
+
+          </div>
+          <div class="last-link mt-5 bottom-0 mb-4">
+            <div class="profile cursor-pointer md:-ml-1 lg:-ml-0 flex items-start">
+              <div class="avatar flex items-center space-x-1">
+                <img class="w-10 h-10 rounded-full" src="assets/images/user.png" alt="">
+                <div class="name">
+                  <span class="text-diagon-black block text-12px lg:text-sm">Usman Abiola</span>
+                  <span class="text-diagon-gray-100 text-12px">Usmanabiola@gmail.com</span>
+                </div>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer text-diagon-gray-100 h-6 w-6 -ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+            </div>
           </div>
         </div>
+
       </aside>
       <main class="app-main-view bg-diagon-gray-500 md:col-span-9 lg:col-span-10 pt-5 md:pt-10 lg:pt-50px pb-16 pl-5 lg:pl-50px pr-6">
         <div class="bread-crumb hidden text-xs text-diagon-gray-600 flex  space-x-1 leading-6 font-medium">
@@ -222,7 +237,7 @@
 
 
         <div class="sub-main mt-10 md:mt-14 lg:mt-62 grid md:grid-cols-3 lg:grid-cols-4 md:gap-x-5 gap-y-8 pb-10">
-          <a href="#" v-for="(product, index) in productData" :key="`product-${index}`" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+          <a href="purchase-detail.html" v-for="(product, index) in productData" :key="`product-${index}`" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
             <div class="product-detail">
               <div class="product-icon">
                 <img class="rounded h-53px w-53px" :src="`assets/images/${product.id}.png`" alt="">
@@ -233,7 +248,7 @@
               </div>
             </div>
           </a>
-          <a href="#" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+          <a href="purchase-detail.html" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
             <div class="product-detail">
               <div class="product-icon">
                 <img class="rounded h-53px w-53px" src="assets/images/dstv.png" alt="">
@@ -244,7 +259,7 @@
               </div>
             </div>
           </a>
-          <a href="#" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+          <a href="purchase-detail.html" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
             <div class="product-detail">
               <div class="product-icon">
                 <img class="rounded h-53px w-53px" src="assets/images/mtn.png" alt="">
@@ -255,7 +270,7 @@
               </div>
             </div>
           </a>
-          <a href="#" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+          <a href="purchase-detail.html" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
             <div class="product-detail">
               <div class="product-icon">
                 <img class="rounded h-53px w-53px" src="assets/images/gotv.png" alt="">
@@ -266,7 +281,7 @@
               </div>
             </div>
           </a>
-          <a href="#" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
+          <a href="purchase-detail.html" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
             <div class="product-detail">
               <div class="product-icon">
                 <img class="rounded h-53px w-53px" src="assets/images/spec.png" alt="">

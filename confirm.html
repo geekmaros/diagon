@@ -312,290 +312,108 @@
         />
       </svg>
     </div>
-    <aside
-            v-if="showAside"
-            class="app-side-menu md:col-span-3 lg:col-span-2 bg-white px-4 pt-8"
-    >
+    <aside v-if="showAside" class="app-side-menu relative md:col-span-3 lg:col-span-2 bg-white px-4 pt-8">
       <div class="input-eye relative flex items-center">
         <input
                 class="
-                rounded-lg
-                w-full
-                text-sm text-diagon-gray-100
-                border-2 border-diagon-gray-300
-                focus:ring-1
-              "
+                    rounded-lg
+                    w-full
+                    text-sm
+                    text-diagon-gray-100
+                    border-2 border-diagon-gray-300
+                    focus:ring-1
+
+                  "
                 id="search"
                 placeholder="Search for products"
                 type="text"
         />
-        <div
-                class="z-10 absolute bg-white right-0 mr-4 text-diagon-gray-100"
-        >
-          <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-          >
-            <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
+        <div class="z-10 absolute bg-white right-0 mr-4 text-diagon-gray-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         </div>
       </div>
 
       <nav class="mt-6">
         <ul>
-          <li
-                  :class="{'active': urlChecker('')}"
-                  class="
-                  flex
-                  side-nav-menu
-                  items-center
-                  mb-3
-                  cursor-pointer
-                  pl-3
-                  py-2
-                  text-diagon-gray-400
-                  hover:bg-diagon-red-100
-                  text-base
-                  leading-6
-                  font-medium
-                "
-          >
-            <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 mr-3"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-            >
-              <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-              />
+          <li :class="{'active': urlChecker('')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
-            <a href="#">Home</a>
+            <a href="index.html">Home</a>
           </li>
-          <li
-                  :class="{'active': urlChecker('wallet')}"
-                  class="
-                  flex
-                  side-nav-menu
-                  items-center
-                  mb-3
-                  cursor-pointer
-                  pl-3
-                  py-2
-                  text-diagon-gray-400
-                  hover:bg-diagon-red-100
-                  text-base
-                  leading-6
-                  font-medium
-                "
-          >
-            <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 mr-3"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-            >
-              <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-              />
+          <li :class="{'active': urlChecker('wallet')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
             </svg>
             <a href="#">Wallet</a>
           </li>
 
-          <li
-                  :class="{'active': urlChecker('transaction')}"
-                  class="
-                  flex
-                  side-nav-menu
-                  items-center
-                  mb-3
-                  cursor-pointer
-                  pl-3
-                  py-2
-                  text-diagon-gray-400
-                  hover:bg-diagon-red-100
-                  text-base
-                  leading-6
-                  font-medium
-                "
-          >
-            <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 mr-3"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-            >
-              <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-              />
+          <li :class="{'active': urlChecker('transaction')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
             </svg>
             <a href="#">Transactions</a>
           </li>
 
-          <li class="divide mt-4 mb-5"></li>
+          <li class="divide hidden mt-4 mb-5"></li>
 
-          <li
-                  :class="{'active': urlChecker('transfer')}"
-                  class="
-                  flex
-                  side-nav-menu
-                  items-center
-                  mb-3
-                  cursor-pointer
-                  pl-3
-                  py-2
-                  text-diagon-gray-400
-                  hover:bg-diagon-red-100
-                  text-base
-                  leading-6
-                  font-medium
-                "
-          >
-            <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 mr-3"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-            >
-              <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-              />
-            </svg>
-            <a href="#">Transfer</a>
-          </li>
 
-          <li
-                  :class="{'active': urlChecker('support')}"
-                  class="
-                  flex
-                  side-nav-menu
-                  items-center
-                  mb-3
-                  cursor-pointer
-                  pl-3
-                  py-2
-                  text-diagon-gray-400
-                  hover:bg-diagon-red-100
-                  text-base
-                  leading-6
-                  font-medium
-                "
-          >
-            <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 mr-3"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-            >
-              <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
-              />
-            </svg>
-            <a href="#">Support</a>
-          </li>
-          <li
-                  :class="{'active': urlChecker('settings')}"
-                  class="
-                  flex
-                  side-nav-menu
-                  items-center
-                  mb-3
-                  cursor-pointer
-                  pl-3
-                  py-2
-                  text-diagon-gray-400
-                  hover:bg-diagon-red-100
-                  text-base
-                  leading-6
-                  font-medium
-                "
-          >
-            <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 mr-3"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-            >
-              <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-              />
-              <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-            </svg>
-            <a href="#">Settings</a>
-          </li>
         </ul>
       </nav>
-      <div class="last-link absolute bottom-0 mb-4">
-        <div class="profile cursor-pointer flex items-start">
-          <div class="avatar flex items-center space-x-1.5">
-            <img
-                    class="w-10 h-10 rounded-full"
-                    src="assets/images/user.png"
-                    alt=""
-            />
-            <div class="name">
-                  <span class="text-diagon-black block text-sm"
-                  >Usman Abiola</span
-                  >
-              <span class="text-diagon-gray-100 text-12px"
-              >Usmanabiola@gmail.com</span
-              >
-            </div>
-          </div>
-          <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="cursor-pointer text-diagon-gray-100 h-6 w-6 -ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-          >
-            <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-            />
+      <div class="lg:absolute bottom-0">
+        <div :class="{'active': urlChecker('transfer')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
           </svg>
+          <a href="#">Transfer</a>
+        </div>
+
+        <div :class="{'active': urlChecker('support')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <a href="#">Support</a>
+        </div>
+        <div :class="{'active': urlChecker('settings')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <a href="#">Settings</a>
+        </div>
+        <div class="side-ads hidden p-4">
+
+          <p class="text-sm font-medium leading-5 text-diagon-black">New features available!</p>
+          <p class="text-sm font-medium leading-5 text-diagon-gray-100">New features available!</p>
+
+          <img src="assets/images/Image.png" alt="">
+
+          <div class="add-link flex space-x-5 mt-3">
+            <span class="dismiss">Dismiss</span>
+            <a class="whatnew" href="#">What's new?</a>
+          </div>
+
+        </div>
+        <div class="last-link mt-5 bottom-0 mb-4">
+          <div class="profile cursor-pointer md:-ml-1 lg:-ml-0 flex items-start">
+            <div class="avatar flex items-center space-x-1">
+              <img class="w-10 h-10 rounded-full" src="assets/images/user.png" alt="">
+              <div class="name">
+                <span class="text-diagon-black block text-12px lg:text-sm">Usman Abiola</span>
+                <span class="text-diagon-gray-100 text-12px">Usmanabiola@gmail.com</span>
+              </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer text-diagon-gray-100 h-6 w-6 -ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+          </div>
         </div>
       </div>
+
     </aside>
+
     <main
             class="
             app-main-view
@@ -609,6 +427,7 @@
             pl-5
             lg:pl-50px
             pr-6
+            overflow-x-hidden
           "
     >
       <div
@@ -619,7 +438,8 @@
               space-y-3
               md:space-y-0
               items-center
-              space-x-4
+              space-x-2
+              md:space-x-4
               lg:space-x-3
               leading-6
               font-medium
@@ -674,6 +494,25 @@
           />
         </svg>
 
+        <span class="cursor-pointer">DSTV Nigeria</span>
+
+        <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+                  d="M6 12L10 8L6 4"
+                  stroke="#D0D5DD"
+                  stroke-width="1.33333"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+          />
+        </svg>
+
+
         <span
                 class="
                 cursor-pointer
@@ -683,7 +522,7 @@
                 px-3
                 py-0.5
               "
-        >DSTV Nigeria</span
+        >Confirm Transaction</span
         >
       </div>
 
@@ -724,127 +563,100 @@
               />
             </div>
             <div class="product-name mt-4">
-                  <span class="text-diagon-black text-2xl font-medium leading-8"
-                  >DSTV Nigeria</span
+                  <span class="text-diagon-black text-2xl font-semibold leading-8"
+                  >Confirm Transaction</span
                   >
             </div>
           </div>
-          <form class="form-area mt-9 mx-auto px-6 lg:max-w-md">
-            <div class="form-group mb-5">
-              <label
-                      class="
-                      text-12px
-                      block
-                      leading-12px
-                      font-medium
-                      text-diagon-gray-200
-                      uppercase
-                    "
-                      for="card"
-              >DsTV Smart card number</label
-              >
-              <input
-                      class="
-                      rounded-lg
-                      w-full
-                      text-diagon-gray-100
-                      mt-2
-                      border-2 border-diagon-gray-300
-                    "
-                      id="card"
-                      placeholder="Enter Smart Card Number"
-                      type="text"
-              />
-            </div>
-            <div class="form-group mb-5">
-              <label
-                      class="
-                      text-12px
-                      block
-                      leading-12px
-                      font-medium
-                      text-diagon-gray-200
-                      uppercase
-                    "
-                      for="bouquet"
-              >Select bouquet</label
-              >
-              <select
-                      class="
-                      rounded-lg
-                      w-full
-                      text-diagon-gray-100
-                      mt-2
-                      border-2 border-diagon-gray-300
-                    "
-                      id="bouquet"
-                      placeholder="bouquet"
-                      type="text"
-              >
-                <option value="family">Select Bouquet</option>
-                <option value="family">Family</option>
-                <option value="family">Premium</option>
-              </select>
-            </div>
-            <div class="form-group mb-5">
-              <label
-                      class="
-                      text-12px
-                      block
-                      leading-12px
-                      font-medium
-                      text-diagon-gray-200
-                      uppercase
-                    "
-                      for="tel"
-              >Phone number</label
-              >
-              <input
-                      class="
-                      rounded-lg
-                      w-full
-                      text-diagon-gray-100
-                      mt-2
-                      border-2 border-diagon-gray-300
-                    "
-                      id="tel"
-                      placeholder="e.g. 09037262612"
-                      type="tel"
-              />
-            </div>
-            <div class="form-group mb-5">
-              <label
-                      class="
-                      text-12px
-                      block
-                      leading-12px
-                      font-medium
-                      text-diagon-gray-200
-                      uppercase
-                    "
-                      for="bouquet"
-              >Select Currency</label
-              >
-              <select
-                      class="
-                      rounded-lg
-                      w-full
-                      text-diagon-gray-100
-                      mt-2
-                      border-2 border-diagon-gray-300
-                    "
-                      id="bouquet"
-                      placeholder="bouquet"
-                      type="text"
-              >
-                <option value="family">Select currency</option>
-                <option value="family"><img src="assets/svg/bitcoin.svg" alt=""> Bitcoin</option>
-                <option value="family">Dollars</option>
-              </select>
-              <button class="bg-diagon-red hover:bg-white hover:text-diagon-red border-2 transition-all duration-300 ease-in-out transform hover:-translate-y-1 shadow-2xl hover:border-2 border-diagon-red text-lg w-full leading-none text-white font-bold rounded-full mt-5 lg:mt-8 py-4" type="submit">Proceed to Pay</button>
+          <div class="transaction-area mt-8 mx-auto px-6 lg:max-w-32rem">
 
+
+            <div class="top-transaction-wrapper border-t border-b py-4 flex justify-between items-end md:items-center">
+              <div class="profile cursor-pointer flex items-start">
+                <div class="avatar flex flex-col items-baseline md:flex-row md:items-center space-x-1.5 ">
+                 <div class="transaction-img-wrapper p-1 rounded-lg">
+                   <img
+                           class="w-10 h-10 rounded-full"
+                           src="assets/images/dstv.png"
+                           alt=""
+                   />
+                 </div>
+                  <div class="name">
+                  <p class="text-diagon-black block text-sm md:text-base font-medium"
+                  >Usman Abiola</p
+                  >
+                    <p class="text-diagon-gray-100 mt-1 block text-sm md:text-base"
+                    >Usmanabiola@gmail.com</p
+                    >
+                  </div>
+                </div>
+
+              </div>
+              <div class="date-time text-sm md:text-base leading-5 text-right">
+                <p class="text-diagon-black">Thurs, Jul 16th 2021</p>
+                <p class="text-diagon-gray-100 mt-1">10:03pm</p>
+              </div>
             </div>
-          </form>
+
+
+            <div class="top-transaction-wrapper mt-4 md:mt-0 border-b py-4 pb-6">
+              <div class="profile cursor-pointer ">
+                  <div class="trans-id flex w-full justify-between mb-4 items-start md:items-center">
+                    <p class="text-diagon-gray-100 block text-sm md:text-base leading-6 font-medium"
+                    >Transaction ID</p
+                    >
+                    <p class="text-diagon-black mt-1 block text-sm md:text-base text-right"
+                    >16008484082586385620280346</p
+                    >
+                  </div>
+
+                <div class="trans-id relative flex w-full justify-between items-center">
+                  <p class="text-diagon-gray-100 block text-sm md:text-base leading-6 font-medium"
+                  >Bouqouet Type</p
+                  >
+                  <p class="text-diagon-black mt-1 block text-sm md:text-base text-right"
+                  >Compact Plus</p
+                  >
+
+                  <div class="change absolute right-0 bottom-0 -mb-4 flex items-center text-xs text-diagon-gray-100">
+                    <span>Change </span>
+                    <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M11.64 0.291071C11.76 0.351071 11.88 0.471071 11.94 0.591071C12 0.651072 12 0.771071 12 0.831071V4.43107C12 4.79107 11.76 5.03107 11.4 5.03107C11.04 5.03107 10.8 4.79107 10.8 4.43107V2.27107L5.22 7.85107C5.1 7.97107 4.98 8.03107 4.8 8.03107C4.62 8.03107 4.5 7.97107 4.38 7.85107C4.14 7.61107 4.14 7.25107 4.38 7.01107L9.96 1.43107H7.8C7.44 1.43107 7.2 1.19107 7.2 0.831071C7.2 0.471071 7.44 0.231071 7.8 0.231071H11.4C11.46 0.231071 11.58 0.231071 11.64 0.291071ZM10.2 10.4311V6.83107C10.2 6.47107 9.96 6.23107 9.6 6.23107C9.24 6.23107 9 6.47107 9 6.83107V10.4311C9 10.7911 8.76 11.0311 8.4 11.0311H1.8C1.44 11.0311 1.2 10.7911 1.2 10.4311V3.83107C1.2 3.47107 1.44 3.23107 1.8 3.23107H5.4C5.76 3.23107 6 2.99107 6 2.63107C6 2.27107 5.76 2.03107 5.4 2.03107H1.8C0.78 2.03107 0 2.81107 0 3.83107V10.4311C0 11.4511 0.78 12.2311 1.8 12.2311H8.4C9.42 12.2311 10.2 11.4511 10.2 10.4311Z" fill="#7E84A3"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="top-transaction-wrapper pt-6 mt-4 md:mt-0 ">
+              <div class="profile cursor-pointer ">
+                <div class="trans-id flex w-full justify-between mb-4 items-start">
+                  <p class="text-diagon-gray-400 block text-sm md:text-base leading-6 font-medium"
+                  >Total Amount</p
+                  >
+
+                  <div class="trans-id relative">
+                    <p class="text-diagon-red block text-2xl leading-6 font-semibold"
+                    >0.0002739 BTC</p
+                    >
+                    <p class="text-diagon-gray-600 mt-1 block text-lg text-right"
+                    >₦18,610.79</p
+                    >
+
+                  </div>
+
+                </div>
+
+
+              </div>
+            </div>
+
+            <a href="payment.html">
+              <button class="bg-diagon-red hover:bg-white hover:text-diagon-red border-2 transition-all duration-300 ease-in-out transform hover:-translate-y-1 shadow-2xl hover:border-2 border-diagon-red text-lg w-full leading-none text-white font-bold rounded-full mt-5 lg:mt-8 py-4" type="">Proceed to Pay</button>
+
+            </a>
+          </div>
         </div>
         <div class="ads
                 lg:col-span-5

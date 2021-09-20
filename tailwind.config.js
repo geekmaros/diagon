@@ -44,6 +44,7 @@ module.exports = {
         "diagon-red-100": "#FFF5F5",
         "diagon-black": "#23262F",
         "diagon-blue": "#3D4A76",
+        "diagon-blue-100": "#3F4454",
       },
       lineHeight: {
         "12px": "12px",
@@ -84,6 +85,7 @@ module.exports = {
         "240px": "240px",
         "250px": "250.67px",
         "266px": "266px",
+        "32rem": "32rem",
 
       },
       boxShadow: {
