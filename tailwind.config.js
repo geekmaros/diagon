@@ -9,11 +9,14 @@ module.exports = {
       spacing: {
         "29px": "29px",
         "42px": "42px",
+        "47px": "47px",
         "50px": "50px",
         "53px": "53px",
         "56px": "56px",
+        "60px": "60px",
         62: "62px",
         70: "70px",
+        "72px": "72px",
         "80px": "80px",
         83: "83px",
         "88px": "88px",
@@ -67,6 +70,7 @@ module.exports = {
         "12px": "12px",
         "17px": "17.7857px",
         "26px": "26px",
+        "34px": "34px",
         "40px": "40px",
         "42px": "42px",
         "54px": "54px",
@@ -77,12 +81,13 @@ module.exports = {
       },
       maxWidth: {
         "100px": "100px",
+        "240px": "240px",
         "250px": "250.67px",
+        "266px": "266px",
 
       },
       boxShadow: {
-        whitebutton:
-            "0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06)",
+        "diagon-bs": "0px 5px 10px rgba(15, 15, 15, 0.02)",
       },
       borderRadius: {
         "30px": "30px",

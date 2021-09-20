@@ -35,6 +35,9 @@ body{
     top: calc(100vh / 2);
     margin-right: 10px;
 }
+input[type=text]::placeholder{
+    opacity: .5;
+}
 
 
 @tailwind base;
