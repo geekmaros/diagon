@@ -18,9 +18,9 @@
     >
     <header class="app-header z-30 sticky top-0 col-span-12 py-2 lg:px-6 pb-5 lg:pb-3 w-full shadow-lg lg:flex justify-between">
       <div class="logo-search flex mx-3 lg:mx-0 justify-between lg:justify-start items-center">
-        <div class="logo">
+        <a href="index.html" class="logo">
           <img src="assets/svg/main-logo%201.svg" alt="">
-        </div>
+        </a>
           <div class="search form-group bg-white ml-5 lg:ml-115">
             <div class="input-eye mt-2 relative flex items-center">
               <input
@@ -46,6 +46,12 @@
           </div>
       </div>
       <nav class="flex mx-3 justify-between lg:space-x-5 items-center mt-5 lg:mt-0">
+
+        <div @click="showAside = !showAside" class="aside-toggle shadow z-40 cursor-pointer hover:bg-gray-600 mt-1 bg-white w-8 md:hidden h-8 mr-6 border-2 flex justify-center items-center rounded-full">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </div>
         <div class="lang cursor-pointer relative">
           <div @click="showLangOption = !showLangOption" class="text-sm cursor-pointer leading-4 text-diagon-black flex items-center space-x-2">
             <span>{{activeLang}}</span>
@@ -61,12 +67,12 @@
           </div>
         </div>
 
-        <div class="spark cursor-pointer">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M20.3609 21L19.376 26.9096L25.0885 19H19.6391L20.624 13.0904L14.9115 21H20.3609ZM23.2984 9.2096C23.4722 8.16696 22.1202 7.6028 21.5013 8.45971L12.1451 21.4145C11.6675 22.0758 12.14 23 12.9558 23H18L16.7016 30.7904C16.5278 31.8331 17.8798 32.3972 18.4987 31.5403L27.8549 18.5855C28.3326 17.9242 27.86 17 27.0442 17H22L23.2984 9.2096Z" fill="#777E91"/>
-          </svg>
+<!--        <div class="spark cursor-pointer">-->
+<!--          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M20.3609 21L19.376 26.9096L25.0885 19H19.6391L20.624 13.0904L14.9115 21H20.3609ZM23.2984 9.2096C23.4722 8.16696 22.1202 7.6028 21.5013 8.45971L12.1451 21.4145C11.6675 22.0758 12.14 23 12.9558 23H18L16.7016 30.7904C16.5278 31.8331 17.8798 32.3972 18.4987 31.5403L27.8549 18.5855C28.3326 17.9242 27.86 17 27.0442 17H22L23.2984 9.2096Z" fill="#777E91"/>-->
+<!--          </svg>-->
 
-        </div>
+<!--        </div>-->
 
         <div class="notification-bell cursor-pointer">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,17 +98,13 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#777E91"/>
           </svg>
         </div>
-        <div class="avatar">
-          <img class="w-10 h-10 rounded-full" src="assets/images/user.png" alt="">
-        </div>
+<!--        <div class="avatar">-->
+<!--          <img class="w-10 h-10 rounded-full" src="assets/images/user.png" alt="">-->
+<!--        </div>-->
       </nav>
     </header>
     <div class="app-main overflow-y-scroll md:overflow-y-auto w-full md:grid grid-cols-12 col-span-12">
-      <div @click="showAside = !showAside" class="aside-toggle shadow z-40 cursor-pointer hover:bg-gray-600 mt-1 bg-white fixed right-0 top-10s w-10 md:hidden h-10 border-2 flex justify-center items-center rounded-full">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </div>
+
       <aside v-if="showAside" class="app-side-menu relative md:col-span-3 lg:col-span-2 bg-white px-4 pt-8">
         <div class="input-eye relative flex items-center">
           <input
@@ -222,8 +224,8 @@
           <span class="cursor-pointer text-diagon-red">DSTV Nigeria</span>
         </div>
 
-        <div class="bread-crumb text-xs text-diagon-gray-600 flex flex-wrap space-y-3 md:space-y-0 items-center space-x-4 lg:space-x-8 leading-6 font-medium">
-          <a href="#" class="cursor-pointer text-white bg-diagon-blue rounded-full  px-3 p-1 ">Top Products</a>
+        <div class="bread-crumb text-xs text-diagon-gray-600 flex flex-wrap space-y-3 md:space-y-0 items-center space-x-2 md:space-x-4 lg:space-x-8 leading-6 font-medium">
+          <a href="#" class="cursor-pointer text-white bg-diagon-blue rounded-full mt-2  px-3 p-1 ">Top Products</a>
 
           <a href="#" class="cursor-pointer block hover:text-diagon-red">Airtime</a>
           <a href="#" class="cursor-pointer block  hover:text-diagon-red">Data Plan</a>
@@ -345,11 +347,6 @@
             ]
           };
         },
-        computed: {
-          imageUrl(){
-            return require()
-          }
-        },
         methods: {
           selectActiveLang(lang){
             this.activeLang = lang
@@ -358,7 +355,12 @@
             urlChecker(value){
               return window.location.href.indexOf(value) > -1;
 
-            }
+            },
+        },
+        mounted(){
+          if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+            this.showAside = false
+          }
         }
       }).mount("#app-index");
     </script>
