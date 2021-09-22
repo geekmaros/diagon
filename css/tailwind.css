@@ -74,6 +74,10 @@ input[type=text]::placeholder{
     color: #6941C6;
 }
 
+@media screen and (max-width: 300){
+    
+}
+
 
 @tailwind base;
 @tailwind components;
