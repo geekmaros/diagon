@@ -105,7 +105,13 @@
     </header>
     <div class="app-main overflow-y-scroll md:overflow-y-auto w-full md:grid grid-cols-12 col-span-12">
 
-      <aside v-if="showAside" class="app-side-menu relative md:col-span-3 lg:col-span-2 bg-white px-4 pt-8">
+      <aside :class="showAside ? 'left-0' : '-left-80'" class="app-side-menu transition-all duration-300 ease-in fixed h-screen md:h-auto shadow-2xl md:shadow-none pt-20 md:pt-8 top-0 z-30 md:relative md:col-span-3 lg:col-span-2 bg-white px-4">
+        <div @click="showAside = false" class="close text-diagon-gray-100 md:hidden absolute top-0 right-0 mr-8 rounded-full border shadow-lg mt-5 cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-diagon-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </div>
+
         <div class="input-eye relative flex items-center">
           <input
                   class="
@@ -189,7 +195,7 @@
          </div>
 
           </div>
-          <div class="last-link mt-5 bottom-0 mb-4">
+          <div class="last-link mt-5 absolute md:relative bottom-0 mb-6">
             <div class="profile cursor-pointer md:-ml-1 lg:-ml-0 flex items-start">
               <div class="avatar flex items-center space-x-1">
                 <img class="w-10 h-10 rounded-full" src="assets/images/user.png" alt="">
@@ -206,7 +212,18 @@
         </div>
 
       </aside>
-      <main class="app-main-view bg-diagon-gray-500 md:col-span-9 lg:col-span-10 pt-5 md:pt-10 lg:pt-50px pb-16 pl-5 lg:pl-50px pr-6">
+      <main class="app-main-view bg-diagon-gray-500 md:col-span-9 lg:col-span-10 pt-5 md:pt-10 lg:pt-18 pb-16 pl-5 lg:pl-50px pr-6">
+
+        <div class="banner rounded-2xl overflow-hidden shadow-lg bg-white flex flex-col md:flex-row items-center mb-5 justify-between md:space-x-10 md:pl-5 lg:pl-47px">
+          <div class="text-section text-center md:text-left pt-8 mb-5 md:mb-0">
+            <h1 class="text-3xl md:text-2xl lg:text-5xl font-semibold leading-10">Get the best deals</h1>
+            <p class="text-diagon-gray-700 mt-4 text-sm lg:text-lg leading-6 max-w-md">Get the best deals on #Diagon while you purchase from over 100 top service provider brands in the Nigeria and pay seamlessly in cryptocurrency</p>
+          </div>
+    <div class="banner-image">
+      <img class="" src="assets/images/banner.png" alt="">
+    </div>
+        </div>
+
         <div class="bread-crumb hidden text-xs text-diagon-gray-600 flex  space-x-1 leading-6 font-medium">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -235,8 +252,6 @@
 
 
         </div>
-
-
 
         <div class="sub-main mt-10 md:mt-14 lg:mt-62 grid md:grid-cols-3 lg:grid-cols-4 md:gap-x-5 gap-y-8 pb-10">
           <a href="purchase-detail.html" v-for="(product, index) in productData" :key="`product-${index}`" class="product-wrapper rounded-lg shadow-lg md:max-w-250px transform transition-all cursor-pointer duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl pt-8 pl-8 pb-10 bg-white">
