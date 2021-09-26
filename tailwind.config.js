@@ -8,6 +8,7 @@ module.exports = {
       },
       spacing: {
         "29px": "29px",
+        "36px": "36px",
         "42px": "42px",
         "47px": "47px",
         "50px": "50px",
@@ -50,6 +51,8 @@ module.exports = {
         "diagon-blue-100": "#3F4454",
         "diagon-orange": "#E10101",
         "diagon-green": "#4FBF67",
+        "diagon-green-100": "#219653",
+        "diagon-pink-100": "#EF5DA8",
       },
       lineHeight: {
         "12px": "12px",
@@ -73,6 +76,8 @@ module.exports = {
         0.09: "-0.9px",
       },
       fontSize: {
+        "9px": "9.33px",
+        "10px": "10.88px",
         "12px": "12px",
         "17px": "17.7857px",
         "26px": "26px",

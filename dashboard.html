@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagon</title>
+    <!--    Link below for development-->
+    <link rel="stylesheet" href="css/tailwind.css" />
+    <!--    Link below for production-->
+    <link rel="stylesheet" href="styles/tailwind.css" />
+    <!--    Link below for custom CSS-->
+    <link rel="stylesheet" href="/css/sass/main.scss" />
+</head>
+<body>
+<section
+        id="app-index"
+        class="md:grid grid-cols-12 relative bg-white w-full"
+>
+    <header class="app-header z-30 sticky top-0 col-span-12 py-2 lg:px-6 pb-5 lg:pb-3 w-full shadow-lg lg:flex justify-between">
+        <div class="logo-search flex mx-3 lg:mx-0 justify-between lg:justify-start items-center">
+            <a href="index.html" class="logo">
+                <img src="assets/svg/main-logo%201.svg" alt="">
+            </a>
+            <div class="search form-group bg-white ml-5 lg:ml-115">
+                <div class="input-eye mt-2 relative flex items-center">
+                    <input
+                            class="
+                    rounded-lg
+                    w-full
+                    text-sm
+                    md:w-80
+                    text-diagon-gray-100
+                    border-2 border-diagon-gray-300
+                    focus:ring-1
+
+                  "
+                            id="search"
+                            placeholder="Search for products"
+                            type="text"
+                    />
+                    <div class="z-10 absolute bg-white right-0 mr-2 md:mr-4 text-diagon-gray-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="flex mx-3 justify-between lg:space-x-5 items-center mt-5 lg:mt-0">
+
+            <div @click="showAside = !showAside" class="aside-toggle shadow z-40 cursor-pointer hover:bg-gray-600 mt-1 bg-white w-8 md:hidden h-8 mr-6 border-2 flex justify-center items-center rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </div>
+            <div class="lang cursor-pointer relative">
+                <div @click="showLangOption = !showLangOption" class="text-sm cursor-pointer leading-4 text-diagon-black flex items-center space-x-2">
+                    <span>{{activeLang}}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+
+                <div v-if="showLangOption" class="lang-options bg-white mt-3 ml-5 absolute w-20 text-center rounded-lg border shadow-2xl text-12px leading-4 text-diagon-black">
+                    <ul class="">
+                        <li @click="selectActiveLang(lang)" v-for="(lang, index) in language" :key="`lang-${index}`" class="mb-2 p-1 cursor-pointer hover:bg-diagon-gray-200 hover:text-white">{{lang}}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--        <div class="spark cursor-pointer">-->
+            <!--          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+            <!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M20.3609 21L19.376 26.9096L25.0885 19H19.6391L20.624 13.0904L14.9115 21H20.3609ZM23.2984 9.2096C23.4722 8.16696 22.1202 7.6028 21.5013 8.45971L12.1451 21.4145C11.6675 22.0758 12.14 23 12.9558 23H18L16.7016 30.7904C16.5278 31.8331 17.8798 32.3972 18.4987 31.5403L27.8549 18.5855C28.3326 17.9242 27.86 17 27.0442 17H22L23.2984 9.2096Z" fill="#777E91"/>-->
+            <!--          </svg>-->
+
+            <!--        </div>-->
+
+            <div class="notification-bell cursor-pointer">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="28" width="12" height="12" rx="6" fill="#58BD7D"/>
+                    <path d="M29 26.0233C29 26.5113 28.6043 26.907 28.1163 26.907H11.8837C11.3957 26.907 11 26.5113 11 26.0233C11 25.5352 11.3957 25.1395 11.8837 25.1395H11.9V18.9809C11.9 14.5729 15.527 11 20 11C24.473 11 28.1 14.5729 28.1 18.9809V25.1395H28.1163C28.6043 25.1395 29 25.5352 29 26.0233ZM13.7 25.1395H26.3V18.9809C26.3 15.5494 23.4794 12.7674 20 12.7674C16.5206 12.7674 13.7 15.5494 13.7 18.9809V25.1395ZM17.976 28.7558C17.7312 28.2608 18.1977 27.7907 18.75 27.7907H21.25C21.8023 27.7907 22.2688 28.2608 22.024 28.7558C21.9155 28.9751 21.7699 29.1773 21.591 29.3529C21.169 29.7672 20.5967 30 20 30C19.4033 30 18.831 29.7672 18.409 29.3529C18.2301 29.1773 18.0845 28.9751 17.976 28.7558Z" fill="#777E91"/>
+                </svg>
+            </div>
+
+            <div class="wallet cursor-pointer border px-3 border-diagon-gray-100 rounded-full text-center">
+                <span class="text-sm leading-4 font-medium">Wallet</span>
+            </div>
+
+            <div class="mode cursor-pointer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C11.4477 2 11 2.44772 11 3C11 3.55228 11.4477 4 12 4C12.5523 4 13 3.55228 13 3C13 2.44772 12.5523 2 12 2Z" fill="#777E91"/>
+                    <path d="M12 20C11.4477 20 11 20.4477 11 21C11 21.5523 11.4477 22 12 22C12.5523 22 13 21.5523 13 21C13 20.4477 12.5523 20 12 20Z" fill="#777E91"/>
+                    <path d="M21 11C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13C20.4477 13 20 12.5523 20 12C20 11.4477 20.4477 11 21 11Z" fill="#777E91"/>
+                    <path d="M4 12C4 11.4477 3.55228 11 3 11C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13C3.55228 13 4 12.5523 4 12Z" fill="#777E91"/>
+                    <path d="M17.6569 4.92903C18.0474 4.53851 18.6806 4.53851 19.0711 4.92903C19.4616 5.31955 19.4616 5.95272 19.0711 6.34324C18.6806 6.73377 18.0474 6.73377 17.6569 6.34324C17.2664 5.95272 17.2664 5.31955 17.6569 4.92903Z" fill="#777E91"/>
+                    <path d="M6.34309 17.6568C5.95257 17.2663 5.3194 17.2663 4.92888 17.6568C4.53836 18.0473 4.53836 18.6805 4.92888 19.071C5.3194 19.4616 5.95257 19.4616 6.34309 19.071C6.73362 18.6805 6.73362 18.0473 6.34309 17.6568Z" fill="#777E91"/>
+                    <path d="M19.0711 17.6569C19.4616 18.0474 19.4616 18.6806 19.0711 19.0711C18.6806 19.4616 18.0474 19.4616 17.6569 19.0711C17.2664 18.6806 17.2664 18.0474 17.6569 17.6569C18.0474 17.2664 18.6806 17.2664 19.0711 17.6569Z" fill="#777E91"/>
+                    <path d="M6.34319 6.34309C6.73371 5.95257 6.73371 5.3194 6.34319 4.92888C5.95266 4.53836 5.3195 4.53836 4.92897 4.92888C4.53845 5.3194 4.53845 5.95257 4.92897 6.34309C5.3195 6.73362 5.95266 6.73362 6.34319 6.34309Z" fill="#777E91"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#777E91"/>
+                </svg>
+            </div>
+            <!--        <div class="avatar">-->
+            <!--          <img class="w-10 h-10 rounded-full" src="assets/images/user.png" alt="">-->
+            <!--        </div>-->
+        </nav>
+    </header>
+    <div class="app-main overflow-y-scroll md:overflow-y-auto w-full md:grid grid-cols-12 col-span-12">
+
+        <aside :class="showAside ? 'left-0' : '-left-80'" class="app-side-menu transition-all duration-300 ease-in fixed h-screen md:h-auto shadow-2xl md:shadow-none pt-20 md:pt-8 top-0 z-30 md:relative md:col-span-3 lg:col-span-2 bg-white px-4">
+            <div @click="showAside = false" class="close text-diagon-gray-100 md:hidden absolute top-0 right-0 mr-8 rounded-full border shadow-lg mt-5 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-diagon-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </div>
+
+            <div class="input-eye relative flex items-center">
+                <input
+                        class="
+                    rounded-lg
+                    w-full
+                    text-sm
+                    text-diagon-gray-100
+                    border-2 border-diagon-gray-300
+                    focus:ring-1
+
+                  "
+                        id="search"
+                        placeholder="Search for products"
+                        type="text"
+                />
+                <div class="z-10 absolute bg-white right-0 mr-2 md:mr-4 text-diagon-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+            </div>
+
+            <nav class="mt-6">
+                <ul>
+                    <li :class="{'active': urlChecker('')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li :class="{'active': urlChecker('wallet')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        </svg>
+                        <a href="#">Wallet</a>
+                    </li>
+
+                    <li :class="{'active': urlChecker('transaction')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                        <a href="#">Transactions</a>
+                    </li>
+
+                    <li class="divide hidden mt-4 mb-5"></li>
+
+
+                </ul>
+            </nav>
+            <div class="lg:absolute bottom-0">
+                <div :class="{'active': urlChecker('transfer')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                    </svg>
+                    <a href="#">Transfer</a>
+                </div>
+
+                <div :class="{'active': urlChecker('support')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <a href="#">Support</a>
+                </div>
+                <div :class="{'active': urlChecker('settings')}" class="flex side-nav-menu items-center mb-3 cursor-pointer pl-3 py-2 text-diagon-gray-400 hover:bg-diagon-red-100 text-base leading-6 font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <a href="#">Settings</a>
+                </div>
+                <div class="side-ads hidden p-4">
+
+                    <p class="text-sm font-medium leading-5 text-diagon-black">New features available!</p>
+                    <p class="text-sm font-medium leading-5 text-diagon-gray-100">New features available!</p>
+
+                    <img src="assets/images/Image.png" alt="">
+
+                    <div class="add-link flex space-x-5 mt-3">
+                        <span class="dismiss">Dismiss</span>
+                        <a class="whatnew" href="#">What's new?</a>
+                    </div>
+
+                </div>
+                <div class="last-link mt-5 absolute md:relative bottom-0 mb-16">
+                    <div class="profile cursor-pointer md:-ml-1 lg:-ml-0 flex items-start">
+                        <div class="avatar flex items-center space-x-1">
+                            <img class="w-10 h-10 rounded-full" src="assets/images/user.png" alt="">
+                            <div class="name">
+                                <span class="text-diagon-black block text-12px lg:text-sm">Usman Abiola</span>
+                                <span class="text-diagon-gray-100 text-12px">Usmanabiola@gmail.com</span>
+                            </div>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer text-diagon-gray-100 h-6 w-6 -ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+        <main class="app-main-view bg-diagon-gray-500 md:col-span-9 lg:col-span-10 pt-5 md:pt-10 lg:pt-18 pb-16 pl-5 lg:pl-50px pr-6">
+            <div class="grid-stat grid grid-cols-1 gap-y-5 lg:grid-cols-3 gap-x-5">
+                <div class="stat-wrapper bg-white lg:max-w-md hover:-translate-y-2 transform ease-in-out cursor-pointer transition-all duration-300 pt-6  pb-5 rounded-2xl shadow-lg">
+                    <div class="top flex justify-between items-center border-b pb-5 pl-4 pr-8">
+                        <div class="icon-name flex items-center space-x-4">
+                            <img src="assets/svg/Icon.svg" alt="">
+                            <div class="name">
+                                <p class="text-diagon-black text-sm">DGN Balance</p>
+                                <span class="text-xs leading-3 text-diagon-gray-600">Diagon </span>
+                            </div>
+                        </div>
+
+                        <div class="percentage text-diagon-green flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" />
+                            </svg>
+                            <span class="text-sm">+2.73%</span>
+                        </div>
+                    </div>
+                    <p class="text-diagon-black text-2xl pl-4 pr-8 pt-5">DGN <span class="font-semibold">18,245,000</span></p>
+                </div>
+                <div class="stat-wrapper bg-white lg:max-w-md hover:-translate-y-2 transform ease-in-out cursor-pointer transition-all duration-300 pt-6  pb-5 rounded-2xl shadow-lg">
+                    <div class="top flex justify-between items-center border-b pb-5 pl-4 pr-8">
+                        <div class="icon-name flex items-center space-x-4">
+                            <img src="assets/svg/Icon(1).svg" alt="">
+                            <div class="name">
+                                <p class="text-diagon-black text-sm">USD Balance</p>
+                                <span class="text-xs leading-3 text-diagon-gray-600">Dollars</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-diagon-black text-2xl pl-4 pr-8 pt-5"> <span class="font-semibold">$18,245,000.01</span></p>
+                </div>
+                <div class="stat-wrapper bg-white lg:max-w-md hover:-translate-y-2 transform ease-in-out cursor-pointer transition-all duration-300 pt-6  pb-5 rounded-2xl shadow-lg">
+                    <div class="top flex justify-between items-center border-b pb-5 pl-4 pr-8">
+                        <div class="icon-name flex items-center space-x-4">
+                            <img src="assets/svg/Icon(2).svg" alt="">
+                            <div class="name">
+                                <p class="text-diagon-black text-sm">DGN Balance</p>
+                                <span class="text-xs leading-3 text-diagon-gray-600">Ecosystem Rewards </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <p class="text-diagon-black text-2xl pl-4 pr-8 pt-5">DGN <span class="font-semibold">18,245,000</span></p>
+                </div>
+
+            </div>
+
+            <div class="main-grid grid gap-8 grid-cols-12 mt-36px gap-x-2 md:gap-x-8 pb-10 md:pb-16">
+                <div class="sub-main-grid col-span-12 lg:col-span-7 ">
+                   <div class="asset-price bg-white rounded-xl shadow-lg p-6">
+                       <h2 class="text-lg text-diagon-black leading-7 font-medium">Asset Prices</h2>
+
+                       <div class="asset-price-wrapper cursor-pointer group mt-4 mb-3 bg-white pl-4 pt-3 pr-3 lg:pr-6 pb-3 border rounded-lg flex flex-col md:flex-row justify-between items-center">
+                           <div class="top self-start flex justify-between items-center mb-3 md:mb-0">
+                               <div class="icon-name flex items-center space-x-4">
+                                   <img class="" src="assets/svg/Icon.svg" alt="">
+                                   <div class="name text-10px">
+                                       <p class="text-diagon-black text-10px"><span class="font-semibold">$0.039 </span>/ 1 DGN</p>
+                                       <div class="flex items-center text-10px space-x-1 lg:space-x-5">
+                                           <span class=" leading-3 text-diagon-gray-600">Diagon DGN</span>
+
+                                           <div class="percentage text-diagon-green flex items-center">
+                                               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-10px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" />
+                                               </svg>
+                                               <span class="">+2.73%</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+
+                           <div class="button group-hover:opacity-100 opacity-100 lg:opacity-0 flex items-center space-x-3">
+                               <button
+                                       href="#"
+                                       class="
+                    text-diagon-red
+                    block
+
+                    text-center text-sm
+                    shadow-sm
+                    hover:border-diagon-red
+                    hover:bg-diagon-orange
+                    hover:text-white
+                    px-3
+                    py-2
+                    font-medium
+                    leading-4
+                    rounded-full
+                    border-2 border-diagon-red
+                  "
+                               >
+                                   <span>Withdraw DGN</span>
+                               </button>
+                               <button
+                                       href="#"
+                                       class="
+                    text-white
+                    bg-diagon-red
+                    block
+                    font-medium
+                    text-center text-sm
+                    shadow-sm
+                    hover:border-diagon-red
+                    hover:bg-diagon-red
+                    hover:text-white
+                    px-8
+                    py-2
+                    leading-4
+                    rounded-full
+                    border-2
+                    border-diagon-red
+                  "
+                               >
+                                   <span>Buy DGN</span>
+                               </button>
+                           </div>
+                       </div>
+                       <div class="asset-price-wrapper cursor-pointer group mt-4 mb-3 bg-white pl-4 pt-3 pr-3 lg:pr-6 pb-3 border rounded-lg flex flex-col md:flex-row justify-between items-center">
+                           <div class="top self-start flex justify-between items-center mb-3 md:mb-0">
+                               <div class="icon-name flex items-center space-x-4">
+                                   <img class="" src="assets/svg/bitcoinlogo.svg" alt="">
+                                   <div class="name text-10px">
+                                       <p class="text-diagon-black text-10px"><span class="font-semibold">$42,682.79  </span>/ 1 BTC</p>
+                                       <div class="flex items-center text-10px space-x-1 lg:space-x-5">
+                                           <span class=" leading-3 text-diagon-gray-600">Bitcoin BTC</span>
+
+                                           <div class="percentage text-diagon-green flex items-center">
+                                               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-10px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" />
+                                               </svg>
+                                               <span class="">+2.73%</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+
+                           <div class="button group-hover:opacity-100 opacity-100 lg:opacity-0 flex items-center space-x-3">
+                               <button
+                                       href="#"
+                                       class="
+                    text-diagon-red
+                    block
+
+                    text-center text-sm
+                    shadow-sm
+                    hover:border-diagon-red
+                    hover:bg-diagon-orange
+                    hover:text-white
+                    px-3
+                    py-2
+                    font-medium
+                    leading-4
+                    rounded-full
+                    border-2 border-diagon-red
+                  "
+                               >
+                                   <span>Withdraw DGN</span>
+                               </button>
+                               <button
+                                       href="#"
+                                       class="
+                    text-white
+                    bg-diagon-red
+                    block
+                    font-medium
+                    text-center text-sm
+                    shadow-sm
+                    hover:border-diagon-red
+                    hover:bg-diagon-red
+                    hover:text-white
+                    px-8
+                    py-2
+                    leading-4
+                    rounded-full
+                    border-2
+                    border-diagon-red
+                  "
+                               >
+                                   <span>Buy DGN</span>
+                               </button>
+                           </div>
+                       </div>
+                       <div class="asset-price-wrapper cursor-pointer group mt-4 mb-3 bg-white pl-4 pt-3 pr-3 lg:pr-6 pb-3 border rounded-lg flex flex-col md:flex-row justify-between items-center">
+                           <div class="top self-start flex justify-between  mb-3 md:mb-0  items-center">
+                               <div class="icon-name  flex items-center space-x-4">
+                                   <img class="" src="assets/svg/eth.svg" alt="">
+                                   <div class="name text-10px">
+                                       <p class="text-diagon-black text-10px"><span class="font-semibold">$2,905.51 </span>/ 1 ETH</p>
+                                       <div class="flex items-center text-10px space-x-1 lg:space-x-5">
+                                           <span class=" leading-3 text-diagon-gray-600">Ethereum ETH</span>
+
+                                           <div class="percentage hidden text-diagon-green flex items-center">
+                                               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-10px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" />
+                                               </svg>
+                                               <span class="">+2.73%</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+
+                           <div class="button group-hover:opacity-100 opacity-100 lg:opacity-0 flex items-center space-x-3">
+                               <button
+                                       href="#"
+                                       class="
+                    text-diagon-red
+                    block
+
+                    text-center text-sm
+                    shadow-sm
+                    hover:border-diagon-red
+                    hover:bg-diagon-orange
+                    hover:text-white
+                    px-3
+                    py-2
+                    font-medium
+                    leading-4
+                    rounded-full
+                    border-2 border-diagon-red
+                  "
+                               >
+                                   <span>Withdraw DGN</span>
+                               </button>
+                               <button
+                                       href="#"
+                                       class="
+                    text-white
+                    bg-diagon-red
+                    block
+                    font-medium
+                    text-center text-sm
+                    shadow-sm
+                    hover:border-diagon-red
+                    hover:bg-diagon-red
+                    hover:text-white
+                    px-8
+                    py-2
+                    leading-4
+                    rounded-full
+                    border-2
+                    border-diagon-red
+                  "
+                               >
+                                   <span>Buy DGN</span>
+                               </button>
+                           </div>
+                       </div>
+
+                   </div>
+
+                    <div class="games mt-6 bg-white rounded-xl shadow-lg p-6">
+                        <h2 class="text-lg text-diagon-black leading-7 font-medium">Games</h2>
+                        <div class="game-box mt-5 flex flex-col md:flex-row items-center mb-3 md:mb-0 md:space-x-5">
+                            <img  class="rounded-2xl self-start" src="assets/images/2game.png" alt="">
+
+                            <div class="game-details mt-4 md:mt-0">
+                                <h2 class="text-diagon-black text-2xl leading-8 pr-2 font-medium">Try out Diagon Gems</h2>
+                                <p class="text-sm block mt-2 max-w-xs leading-6 pr-5 text-diagon-gray-100">Diagon Gems 2 is a role-playing fighting game developed by Diagon and was soft-launched </p>
+                                <a
+                                        href="#"
+                                        class="
+                    text-diagon-red
+                    mr-2 md:mr-0
+                    flex justify-center items-center space-x-2
+                    font-semibold
+                    mt-5
+                    max-w-150px
+                    text-center text-sm
+                    shadow-sm
+                    hover:border-diagon-red
+                    hover:bg-diagon-orange
+                    hover:text-white
+                    px-3
+                    py-2
+                    leading-4
+                    rounded-full
+                    border-2 border-diagon-gray-100
+                  "
+                                >
+                                    <span>Play Games</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="diagon-ads flex justify-between items-center mt-6 bg-white rounded-xl shadow-lg p-6">
+                       <div class="left">
+                           <h2 class="text-lg text-diagon-black leading-7 font-semibold">Diagon x BTC Net Affliate Campaign</h2>
+                           <a
+                                   href="#"
+                                   class="
+                      text-diagon-pink-100
+                      flex justify-center items-center space-x-2
+                      font-semibold
+                      mt-3
+                      max-w-150px
+                      text-center text-sm
+                      shadow-sm
+                      hover:border-diagon-pink-100
+                      hover:bg-diagon-pink-100
+                      hover:text-white
+                      px-3
+                      py-2
+                      leading-4
+                      rounded-xl
+                      border border-diagon-gray-300
+                    "
+                           >
+                               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                               </svg> <span>Read more</span>
+                           </a>
+                       </div>
+                        <div class="right">
+                            <img src="assets/images/ads.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="sub-main-grid col-span-12 lg:col-span-5">
+                    <div class="asset-price bg-white rounded-xl shadow-lg p-6">
+                        <h2 class="text-lg text-diagon-black leading-7 font-medium">Most Recent Transactions</h2>
+
+                        <div class="trans-wrapper mt-5">
+                            <div class="trans-data-wrapper bg-white cursor-pointer pt-4  border-b border-diagon-gray-300  ">
+                                <div class="top flex justify-between items-center pb-5">
+                                    <div class="icon-name flex items-center space-x-4">
+                                        <img class="w-6 w-6" src="assets/svg/Icon.svg" alt="">
+                                        <div class="name">
+                                            <p class="text-diagon-black text-sm font-medium">DGN Token Purchase</p>
+
+                                            <p class="text-xs leading-3 mt-1 text-diagon-gray-600"> <span class="">10/06/2021  </span>  <span class="">10:01pm </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="percentage text-diagon-green-100 flex justify-end items-center">
+                                        <span class="text-sm text-right md:text-left font-medium">+ DGN 958,999.91</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="trans-data-wrapper bg-white cursor-pointer pt-4  border-b border-diagon-gray-300 ">
+                                <div class="top flex justify-between items-center pb-5">
+                                    <div class="icon-name flex items-center space-x-4">
+                                        <img class="w-6 w-6" src="assets/svg/withdraw.svg" alt="">
+                                        <div class="name">
+                                            <p class="text-diagon-black text-sm font-medium">DGN Token Purchase</p>
+
+                                            <p class="text-xs leading-3 mt-1 text-diagon-gray-600"> <span class="">10/06/2021  </span>  <span class="">10:01pm </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="percentage text-diagon-green-100 text-right md:text-left flex items-center">
+                                        <span class="text-sm font-medium">+ DGN 958,999.91</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="trans-data-wrapper bg-white cursor-pointer pt-4  border-b border-diagon-gray-300  ">
+                                <div class="top flex justify-between items-center pb-5">
+                                    <div class="icon-name flex items-center space-x-4">
+                                        <img class="w-6 w-6" src="assets/svg/Icon.svg" alt="">
+                                        <div class="name">
+                                            <p class="text-diagon-black text-sm font-medium">DGN Token Purchase</p>
+
+                                            <p class="text-xs leading-3 mt-1 text-diagon-gray-600"> <span class="">10/06/2021  </span>  <span class="">10:01pm </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="percentage text-diagon-green-100 text-right md:text-left flex items-center">
+                                        <span class="text-sm font-medium">+ DGN 958,999.91</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="trans-data-wrapper bg-white cursor-pointer pt-4  border-b border-diagon-gray-300 ">
+                                <div class="top flex justify-between items-center pb-5">
+                                    <div class="icon-name flex items-center space-x-4">
+                                        <img class="w-6 w-6" src="assets/svg/withdraw.svg" alt="">
+                                        <div class="name">
+                                            <p class="text-diagon-black text-sm font-medium">DGN Token Purchase</p>
+
+                                            <p class="text-xs leading-3 mt-1 text-diagon-gray-600"> <span class="">10/06/2021  </span>  <span class="">10:01pm </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="percentage text-diagon-green-100 text-right md:text-left flex items-center">
+                                        <span class="text-sm font-medium">+ DGN 958,999.91</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="trans-data-wrapper bg-white cursor-pointer pt-4  border-b border-diagon-gray-300  ">
+                                <div class="top flex justify-between items-center pb-5">
+                                    <div class="icon-name flex items-center space-x-4">
+                                        <img class="w-6 w-6" src="assets/svg/Icon.svg" alt="">
+                                        <div class="name">
+                                            <p class="text-diagon-black text-sm font-medium">DGN Token Purchase</p>
+
+                                            <p class="text-xs leading-3 mt-1 text-diagon-gray-600"> <span class="">10/06/2021  </span>  <span class="">10:01pm </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="percentage text-diagon-green-100 text-right md:text-left flex items-center">
+                                        <span class="text-sm font-medium">+ DGN 958,999.91</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="trans-data-wrapper bg-white cursor-pointer pt-4  border-b border-diagon-gray-300 ">
+                                <div class="top flex justify-between items-center pb-5">
+                                    <div class="icon-name flex items-center space-x-4">
+                                        <img class="w-6 w-6" src="assets/svg/withdraw.svg" alt="">
+                                        <div class="name">
+                                            <p class="text-diagon-black text-sm font-medium">DGN Token Purchase</p>
+
+                                            <p class="text-xs leading-3 mt-1 text-diagon-gray-600"> <span class="">10/06/2021  </span>  <span class="">10:01pm </span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="percentage text-diagon-green-100 text-right md:text-left flex items-center">
+                                        <span class="text-sm font-medium">+ DGN 958,999.91</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</section>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script type="application/javascript" src="main.js"></script>
+</body>
+</html>
