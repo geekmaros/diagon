@@ -45,8 +45,11 @@ module.exports = {
         "diagon-red": "#E10101",
         "diagon-red-100": "#FFF5F5",
         "diagon-black": "#23262F",
+        "diagon-opacity-black": "rgba(16, 16, 16, 0.8)",
         "diagon-blue": "#3D4A76",
         "diagon-blue-100": "#3F4454",
+        "diagon-orange": "#E10101",
+        "diagon-green": "#4FBF67",
       },
       lineHeight: {
         "12px": "12px",
@@ -85,10 +88,13 @@ module.exports = {
       },
       maxWidth: {
         "100px": "100px",
+        "150px": "150px",
         "240px": "240px",
         "250px": "250.67px",
         "266px": "266px",
+        "19rem": "19rem",
         "32rem": "32rem",
+        "35rem": "35rem",
 
       },
       boxShadow: {
